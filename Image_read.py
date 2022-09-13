@@ -1,6 +1,6 @@
 import cv2
 
-image_file = "image/3NBHEFMDIMIOSLAPDCZDZ33ZWI.jpg"
+image_file = "image/my_face.jpg"
 original = cv2.imread(image_file, cv2.IMREAD_COLOR)
 
 gray = cv2.imread(image_file, cv2.IMREAD_GRAYSCALE)
