@@ -2,7 +2,8 @@ from utill.CommUtils import *
 
 image, gray, face_cascade, eye_cascade = preprocessing()
 
-if image is None: raise Exception("이미지 파일 읽기 에러")
+if image is None:
+    raise Exception("이미지 파일 읽기 에러")
 
 faces = face_cascade.detectMultiScale(gray, 1.1, 2, 0, (100, 100))
 
@@ -31,6 +32,7 @@ if faces.any():
             cv2.rectangle(correction_image, rois[2], (255, 0, 255), 2)
 
             cv2.circle(correction_image, tuple(correction_center[0]), 5, (0, 255, 0), 2)
+
             cv2.circle(correction_image, tuple(correction_center[1]), 5, (0, 255, 0), 2)
 
             cv2.circle(correction_image, face_center, 3, (0, 0, 255), 2)

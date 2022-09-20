@@ -2,7 +2,8 @@ from utill.CommUtils import *
 
 image, gray, face_cascade, eye_cascade = preprocessing()
 
-if image is None: raise Exception("이미지 파일 읽기 에러")
+if image is None:
+    raise Exception("이미지 파일 읽기 에러")
 
 faces = face_cascade.detectMultiScale(gray, 1.1, 2, 0, (100, 100))
 
@@ -17,7 +18,7 @@ if faces.any():
     if len(eyes) == 2:
         for ex, ey, ew, eh in eyes:
             # face좌표 int로 형변환
-            face_center = (int(x + w // 2)), int(y + h // 2)
+            face_center = int(x + w // 2), int(y + h // 2)
 
             eye_centers = [[x + ex + ew // 2, y + ey + eh // 2] for ex, ey, ew, eh in eyes]
 
@@ -37,7 +38,8 @@ if faces.any():
 
             subs = [correction_image[y:y + h, x:x + w] for x, y, w, h in rois]
 
-            hists = [cv2.calcHist([sub], [0, 1, 2], mask, (120, 120, 120), (0, 256, 0, 256, 0, 256)) for sub, mask in zip(subs, masks)]
+            hists = [cv2.calcHist([sub], [0, 1, 2], mask, (120, 120, 120), (0, 256, 0, 256, 0, 256)) for sub, mask in
+                     zip(subs, masks)]
 
             hists = [h / np.sum(h) for h in hists]
 
