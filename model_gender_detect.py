@@ -9,7 +9,9 @@ MODEL_MEAN_VALUES = (78.4263377603, 87.7689143744, 114.895847746)
 
 gender_list = ["Male", "Female"]
 
-image = cv2.imread("image/parkseojun.png", cv2.IMREAD_COLOR)
+image = cv2.imread("image/my_face.jpg", cv2.IMREAD_COLOR)
+
+image = cv2.resize(image, (500, 500))
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
